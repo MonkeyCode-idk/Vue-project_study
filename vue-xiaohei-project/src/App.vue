@@ -1,8 +1,8 @@
 <template>
   <!-- 主体区域 -->
   <section id="app">
-   <TodoHeader @add="hhandleAdd"></TodoHeader>
-   <TodoMain :list="list"></TodoMain>
+   <TodoHeader @add="handleAdd"></TodoHeader>
+   <TodoMain @del="handleDel" :list="list"></TodoMain>
    <TodoFooter></TodoFooter> 
   
   </section>
@@ -23,6 +23,11 @@ import TodoFooter from './components/TodoFooter.vue';
 // 2.监听事件（回车 + 点击 都要进行添加）
 // 3.子传父，将任务名称传递给父组件App.vue
 // 4.进行添加 unshift(自己的数据自己负责)
+
+// 删除功能
+// 1.监听事件（监听删除的点击）携带 id
+// 2.子传父，将删除的id传递给父组件App.vue
+// 3.进行删除 filter(自己的数据自己删除)
 export default {
   data() {
     return {
@@ -34,12 +39,17 @@ export default {
     }
   },
   methods: {
-    hhandleAdd(todoName) {
+    handleAdd(todoName) {
       console.log(todoName);
       this.list.unshift({
         id: +new Date(),
         name:todoName
       })
+    },
+    handleDel(id) {
+      // console.log(`收到了孩子的${id}`);
+      this.list = this.list.filter(item => item.id !== id)
+      
     }
   },
   components: {
