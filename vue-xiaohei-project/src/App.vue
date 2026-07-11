@@ -3,7 +3,7 @@
   <section id="app">
    <TodoHeader @add="handleAdd"></TodoHeader>
    <TodoMain @del="handleDel" :list="list"></TodoMain>
-   <TodoFooter></TodoFooter> 
+   <TodoFooter :list="list" @clear="handleClear"></TodoFooter> 
   
   </section>
 </template>
@@ -28,6 +28,10 @@ import TodoFooter from './components/TodoFooter.vue';
 // 1.监听事件（监听删除的点击）携带 id
 // 2.子传父，将删除的id传递给父组件App.vue
 // 3.进行删除 filter(自己的数据自己删除)
+
+// 底部合计：父传子传list -> 渲染
+// 清空功能: 子传父 通知到父组件 -> 父组件进行清空操作
+
 export default {
   data() {
     return {
@@ -49,7 +53,9 @@ export default {
     handleDel(id) {
       // console.log(`收到了孩子的${id}`);
       this.list = this.list.filter(item => item.id !== id)
-      
+    },
+    handleClear() {
+      this.list = ''
     }
   },
   components: {
