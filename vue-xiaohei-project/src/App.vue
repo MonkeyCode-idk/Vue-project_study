@@ -31,11 +31,11 @@ import TodoFooter from './components/TodoFooter.vue';
 
 // 底部合计：父传子传list -> 渲染
 // 清空功能: 子传父 通知到父组件 -> 父组件进行清空操作
-
+// 持久化存储:watch深度监视list的变化 -> 往本地存储 -> 一进入页面优先读取本地
 export default {
   data() {
     return {
-      list: [
+      list: JSON.parse(localStorage.getItem('list')) || [
         {id:1,name:'看电影'},
         {id:2,name:'逛街'},
         {id:3,name:'玩游戏'},
@@ -63,6 +63,14 @@ export default {
     TodoMain,
     TodoFooter
   },
+  watch: {
+    list: {
+      deep: true,
+      handler(newvalue) {
+        localStorage.setItem('list',JSON.stringify(newvalue))
+      }
+    }
+  }
  
 }
 </script>
