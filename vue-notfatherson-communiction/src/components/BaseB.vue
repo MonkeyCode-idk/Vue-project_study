@@ -8,10 +8,18 @@
 <script>
 import Bus from '../utils/EventBus'
 export default {
+   data(){
+    return {
+        list:[
+        {name:'金晨',ename:'JinChen'},
+        {name:'杨幂',ename:'YangMi'}
+    ]
+    }
+   },
     methods: {
         clickSend() {
             // 3.B组件(发送方)触发事件的方式传递参数（发布消息）
-            Bus.$emit('sendMsg','金晨')
+            Bus.$emit('sendMsg',this.list)
         }
     }
 }

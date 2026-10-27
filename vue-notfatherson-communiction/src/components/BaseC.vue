@@ -11,13 +11,19 @@ export default {
     created() {
         // 2.在C组件(接收方),进行监听Bus的事件(订阅消息)
         Bus.$on('sendMsg', (msg) => {
-            // console.log(msg)
-            this.msg = msg
+            const target = msg.find(item=> item.ename === this.myName)
+            console.log(target)
+            clearTimeout(this.timer)
+            this.timer = setTimeout(()=>{
+            this.msg = target ? `${target.name} + (我是1秒后出现的)`: `没有匹配到数据`
+            },1000)
+           
         })
     },
     data() {
         return {
-            msg:''
+            msg:'',
+         myName:'JinChen',
         }
     }
 }
