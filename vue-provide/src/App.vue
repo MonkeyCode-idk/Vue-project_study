@@ -1,17 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import GrandSon from './components/GrandSon.vue';
+import SonA from './components/SonA.vue';
+import SonB from './components/Sonb.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    GrandSon,
+    SonA,
+    SonB
+  },
+  data(){
+    return {
+      color:'pink',
+      userInfo:{
+        name:'zs',
+        age:18
+      }
+    }
   }
 }
 </script>
