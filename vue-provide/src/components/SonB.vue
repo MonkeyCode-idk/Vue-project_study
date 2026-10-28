@@ -1,4 +1,8 @@
-<template></template>
+<template>
+    <div>
+        我是SonB组件
+    </div>
+</template>
 
 <script>
 export default{
@@ -6,5 +10,11 @@ export default{
 }
 </script>
 
-<style>
+<style scoped>
+div{
+     width: 300px;
+    height: 150px;
+    border: 2px solid black;
+    margin-bottom: 20px;
+}
 </style>
