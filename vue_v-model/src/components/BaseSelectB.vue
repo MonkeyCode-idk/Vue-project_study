@@ -11,6 +11,8 @@
 
 <script>
 export default {
+    //   v-model => :value + @input
+    // 所以这里子组件用value和input
     props: {
         value:String
     },
