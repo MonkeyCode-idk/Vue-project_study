@@ -3,14 +3,17 @@
     <BaseSelect :cityId="selectId" @changeId="selectId = $event"></BaseSelect>
     <p>----------------</p>
     <p>v-model传值,子 Input触发</p>
-    <!-- v-model => :value + @input -->
+   
     <p> v-model => :value + @input</p>
     <input v-model="msg1" type="text">
     <br>
-    <input type="text" :value="msg2"> <!-- :value 没有双向绑定，需要借助 @input="msg = $event.target.value -->
+   <span>这个没有双向绑定：</span> <input type="text" :value="msg2"> <!-- :value 没有双向绑定，需要借助 @input="msg = $event.target.value -->
     <br>
     <input type="text" :value="msg3" @input="msg3 = $event.target.value">
     <BaseSelectB v-model="selectId"></BaseSelectB>
+
+    <p>小作业，封装输入框组件，利用v-model简化代码</p>
+    <InputSelect v-model="msg4"></InputSelect>
 
   <!-- 父组件 → 子组件 → 子组件(DOM) → 子组件(emit) → 父组件 → 子组件 -->
     <!-- v-model 数据是双向的，会影响到父组件，vue里面禁止子组件修改父组件 -->
@@ -23,7 +26,7 @@
 
 <script>
 import BaseSelect from './components/BaseSelect.vue';
-
+import InputSelect from './components/InputSelect.vue';
 import BaseSelectB from './components/BaseSelectB.vue';
 export default {
   data() {
@@ -31,12 +34,14 @@ export default {
       selectId: '104',
       msg1: '',
       msg2: '',
-      msg3: ''
+      msg3: '',
+      msg4:'我是小作业'
     }
   },
   components: {
     BaseSelect,
     BaseSelectB,
+    InputSelect
   }
 }
 </script>
