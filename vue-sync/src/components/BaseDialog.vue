@@ -20,10 +20,12 @@
 export default {
   props: {
   visible: Boolean
+  // 这里子组件接收过来的props传值属性名必须和父亲传值名一样. 比如 父亲通过 :visible传递props组。子组件必须用visible才能接收父组件传递的值
   },
   methods: {
     close() {
     this.$emit('update:visible',false)
+    // update: 固定，后缀必须 = 子组件的prop 名
   }
  }
 }
