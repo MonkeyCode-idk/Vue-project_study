@@ -60,7 +60,7 @@ export default {
   },
   async created() {
     // 1.发送请求获取资源
-    const res = await axios.get('http://hmajax.itheima.net/api/news')
+    const res = await axios.get('api/news')
     // console.log(res);
     // this.list = res.data.data
     setTimeout(() => {
