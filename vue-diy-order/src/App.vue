@@ -15,7 +15,12 @@
 
   </div>
 </template>
-
+<!-- 数据流 -->
+<!-- v-color="color1"
+   ↓ Vue 求值表达式 color1
+data.color1 = 'red'
+   ↓ 放进 binding
+binding = { value: 'red', name: 'color', expression: 'color1', ... } -->
 <script>
 export default {
   // mounted(){
